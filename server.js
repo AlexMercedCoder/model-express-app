@@ -5,6 +5,7 @@ const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const cors = require("cors")
+const Todo = require("./models/todo.js") // import Todo object
 
 //**************************
 // GLOBAL VARIABLES
@@ -30,8 +31,52 @@ app.use(express.json()) // parse JSON bodies
 // Register Routes
 //**************************
 // main route
-app.use("/", (req, res) => {
-    res.send("Hello World")
+app.get("/", (req, res) => {
+    res.render("home.ejs")
+})
+
+// index route
+app.get("/todo", (req, res) => {
+    res.render("todo/index.ejs", {
+        todos: Todo.get()
+    })
+})
+
+// create route
+app.post("/todo", (req, res) => {
+    Todo.create(req.body)
+    res.redirect("/todo")
+})
+
+// new route
+app.get("/todo/new", (req, res) => {
+    res.render("todo/new.ejs")
+})
+
+// update route
+app.put("/todo/:id", (req, res) => {
+    Todo.update(req.params.id, req.body)
+    res.redirect("/todo")
+})
+
+// edit route
+app.get("/todo/:id/edit", (req, res) => {
+    res.render("todo/edit.ejs", {
+        todo: Todo.creategetOne(req.params.id)
+    })
+})
+
+// destroy route
+app.delete("/todo/:id", (req, res) => {
+    Todo.delete(req.params.id)
+    res.redirect("/todo")
+})
+
+// show route
+app.get("/todo/:id", (req, res) => {
+    res.render("todo/show.ejs", {
+        todo: Todo.getOne(req.params.id)
+    })
 })
 
 //**************************
