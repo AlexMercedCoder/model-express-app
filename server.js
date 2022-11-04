@@ -6,7 +6,7 @@ const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const cors = require("cors")
-const Todo = require("./models/todo.js") // import Todo model
+const TodoRouter = require("./controllers/todo") // import Todo model
 
 //**************************
 // GLOBAL VARIABLES
@@ -29,6 +29,12 @@ app.use(express.urlencoded({extended: true})) // parse urlencoded bodies
 app.use(express.json()) // parse JSON bodies
 
 //**************************
+// Register Routers
+// groups of routes
+//**************************
+app.use("/todo", TodoRouter)
+
+//**************************
 // Register Routes
 // many routes made into async functions to use async/await
 //**************************
@@ -37,51 +43,7 @@ app.get("/", (req, res) => {
     res.render("home.ejs")
 })
 
-// index route
-app.get("/todo", async (req, res) => {
-    res.render("todo/index.ejs", {
-        todos: await Todo.find({})
-    })
-})
 
-// create route
-app.post("/todo", (req, res) => {
-    Todo.create(req.body)
-    res.redirect("/todo")
-})
-
-// new route
-app.get("/todo/new", (req, res) => {
-    res.render("todo/new.ejs")
-})
-
-// update route
-app.put("/todo/:id", async (req, res) => {
-    await Todo.findByIdAndUpdate(req.params.id, req.body)
-    res.redirect("/todo")
-})
-
-// edit route
-app.get("/todo/:id/edit", async (req, res) => {
-    res.render("todo/edit.ejs", {
-        todo: await Todo.findById(req.params.id),
-        index: req.params.id
-    })
-})
-
-// destroy route
-app.delete("/todo/:id", async (req, res) => {
-    await Todo.findByIdAndDelete(req.params.id)
-    res.redirect("/todo")
-})
-
-// show route
-app.get("/todo/:id", async (req, res) => {
-    res.render("todo/show.ejs", {
-        todo: await Todo.findById(req.params.id),
-        index: req.params.id
-    })
-})
 
 //**************************
 // Server Listener

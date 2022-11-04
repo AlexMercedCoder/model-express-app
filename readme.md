@@ -6,7 +6,9 @@ This repository has an express app at many different states to model the setup f
 
 This branch shows an express app using EJS as a template engine implementing full crud routes for a basic todo list.
 
-Since there is no database, for the model we use an object with an array and several methods to simulate a traditional database model.
+In this branch we use MongoDB as a database and connect to it using the mongoose library.
+
+We also implement full MVC style setup with a Models, Views and Controllers folder separating concerns and organizing code.
 
 |Route|Method|Path|Response|
 |-----|------|----|--------|
