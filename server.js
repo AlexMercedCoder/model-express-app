@@ -30,7 +30,7 @@ app.use(express.json()) // parse JSON bodies
 // Register Routes
 //**************************
 // main route
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello World")
 })
 
