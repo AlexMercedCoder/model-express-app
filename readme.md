@@ -6,7 +6,12 @@ This repository has an express app at many different states to model the setup f
 
 This branch shows an express app using EJS as a template engine implementing full crud routes for a basic todo list.
 
-In this branch we use MongoDB as a database and connect to it using the mongoose library.
+In this branch we use MongoDB as a database and connect to it using the mongoose library. We also implement multi-user authentication.
+
+- Create a User Model
+- Routes for Signup & Login
+- Use of sessions to track login status
+- auth middleware on todo routes to protect them from logged out usersnp
 
 We also implement full MVC style setup with a Models, Views and Controllers folder separating concerns and organizing code.
 

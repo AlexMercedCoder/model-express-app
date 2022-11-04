@@ -5,11 +5,18 @@
 //**************************
 const Todo = require("../models/todo")
 const {Router} = require("express")
+const middleware = require("./middleware")
 
 //**************************
 // Create Router
 //**************************
 const router = Router()
+
+//**************************
+// Router Middleware
+//**************************
+router.use(middleware.auth)
+
 
 //**************************
 // Define Routes
@@ -18,12 +25,13 @@ const router = Router()
 // index route
 router.get("/", async (req, res) => {
     res.render("todo/index.ejs", {
-        todos: await Todo.find({})
+        todos: await Todo.find({username: req.session.username})
     })
 })
 
 // create route
 router.post("/", (req, res) => {
+    req.body.username = req.session.username
     Todo.create(req.body)
     res.redirect("/todo")
 })

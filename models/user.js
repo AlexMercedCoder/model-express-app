@@ -1,4 +1,4 @@
-// in this file we'll import the mongoose connection and create a todo model
+// in this file we'll import the mongoose connection and create a user model
 // we'll export the model for use in our routes
 
 //**************************
@@ -8,19 +8,20 @@ const mongoose = require("./connection.js")
 const {Schema, model} = mongoose
 
 //**************************
-// Todo Schema = Definition of a Todo
+// User Schema = Definition of a Todo
 //**************************
-const TodoSchema = new Schema({
-    text: String,
-    username: String
+const UserSchema = new Schema({
+    username: {type: String, unique: true, required: true},
+    password: {type: String, required: true}
+    
 }, {timestamps: true})
 
 //**************************
-// Todo Model = Object for doing database operations
+// User Model = Object for doing database operations
 //**************************
-const Todo = model("Todo", TodoSchema)
+const User = model("User", UserSchema)
 
 //**************************
 // Export Model for use in Routes
 //**************************
-module.exports = Todo
+module.exports = User

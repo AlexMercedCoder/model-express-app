@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head.ejs", {title: "login"}) %>
+<body>
+
+    <h1>login</h1>
+    <form action="/user/login" method="post">
+        <input type="text" placeholder="username" name="username">
+        <input type="password" placeholder="password" name="password">
+        <input type="submit" value="login">
+
+    </form>
+    
+</body>
+</html>
