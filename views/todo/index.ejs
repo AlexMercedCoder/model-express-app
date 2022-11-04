@@ -9,7 +9,7 @@
 
     <div>
         <% todos.forEach((todo, index) => { %>
-            <a href="/todo/<%= index %>"><h2><%= todo.text %></h2></a>
+            <a href="/todo/<%= todo._id %>"><h2><%= todo.text %></h2></a>
 
         <% }) %>
     </div>

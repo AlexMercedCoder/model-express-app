@@ -4,8 +4,8 @@
 <body>
 
     <h1><%= todo.text%></h1>
-    <a href="/todo/<%= index %>/edit"><button>Edit</button></a>
-    <form action="/todo/<%= index %>?_method=DELETE" method="post">
+    <a href="/todo/<%= todo._id %>/edit"><button>Edit</button></a>
+    <form action="/todo/<%= todo._id %>?_method=DELETE" method="post">
         <input type="submit" value="delete">
     </form>
     

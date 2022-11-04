@@ -3,7 +3,7 @@
   <%- include("../partials/head.ejs", {title: "Update Todo"}) %>
   <body>
 
-    <form action="/todo/<%= index %>?_method=PUT" method="post">
+    <form action="/todo/<%= todo._id %>?_method=PUT" method="post">
         <input type="text" name="text" placeholder="place todo text here" value="<%= todo.text %>">
         <input type="submit" value="Update Todo">
     </form>

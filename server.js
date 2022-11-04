@@ -1,11 +1,12 @@
 //**************************
 // DEPENDENCIES
 //**************************
+require("dotenv").config() // import .env variables
 const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const cors = require("cors")
-const Todo = require("./models/todo.js") // import Todo object
+const Todo = require("./models/todo.js") // import Todo model
 
 //**************************
 // GLOBAL VARIABLES
@@ -29,6 +30,7 @@ app.use(express.json()) // parse JSON bodies
 
 //**************************
 // Register Routes
+// many routes made into async functions to use async/await
 //**************************
 // main route
 app.get("/", (req, res) => {
@@ -36,9 +38,9 @@ app.get("/", (req, res) => {
 })
 
 // index route
-app.get("/todo", (req, res) => {
+app.get("/todo", async (req, res) => {
     res.render("todo/index.ejs", {
-        todos: Todo.get()
+        todos: await Todo.find({})
     })
 })
 
@@ -54,29 +56,29 @@ app.get("/todo/new", (req, res) => {
 })
 
 // update route
-app.put("/todo/:id", (req, res) => {
-    Todo.update(req.params.id, req.body)
+app.put("/todo/:id", async (req, res) => {
+    await Todo.findByIdAndUpdate(req.params.id, req.body)
     res.redirect("/todo")
 })
 
 // edit route
-app.get("/todo/:id/edit", (req, res) => {
+app.get("/todo/:id/edit", async (req, res) => {
     res.render("todo/edit.ejs", {
-        todo: Todo.getOne(req.params.id),
+        todo: await Todo.findById(req.params.id),
         index: req.params.id
     })
 })
 
 // destroy route
-app.delete("/todo/:id", (req, res) => {
-    Todo.delete(req.params.id)
+app.delete("/todo/:id", async (req, res) => {
+    await Todo.findByIdAndDelete(req.params.id)
     res.redirect("/todo")
 })
 
 // show route
-app.get("/todo/:id", (req, res) => {
+app.get("/todo/:id", async (req, res) => {
     res.render("todo/show.ejs", {
-        todo: Todo.getOne(req.params.id),
+        todo: await Todo.findById(req.params.id),
         index: req.params.id
     })
 })
