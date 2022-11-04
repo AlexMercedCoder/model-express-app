@@ -62,7 +62,8 @@ app.put("/todo/:id", (req, res) => {
 // edit route
 app.get("/todo/:id/edit", (req, res) => {
     res.render("todo/edit.ejs", {
-        todo: Todo.creategetOne(req.params.id)
+        todo: Todo.getOne(req.params.id),
+        index: req.params.id
     })
 })
 
@@ -75,7 +76,8 @@ app.delete("/todo/:id", (req, res) => {
 // show route
 app.get("/todo/:id", (req, res) => {
     res.render("todo/show.ejs", {
-        todo: Todo.getOne(req.params.id)
+        todo: Todo.getOne(req.params.id),
+        index: req.params.id
     })
 })
 

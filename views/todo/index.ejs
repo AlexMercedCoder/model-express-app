@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include("partials/head.ejs", {title: "Main Page"}) %>
+<%- include("../partials/head.ejs", {title: "List of Todos"}) %>
 <body>
+
+    <div>
+        <a href="/todo/new"><button>Create a New Todo</button></a>
+    </div>
+
+    <div>
+        <% todos.forEach((todo, index) => { %>
+            <a href="/todo/<%= index %>"><h2><%= todo.text %></h2></a>
+
+        <% }) %>
+    </div>
     
 </body>
 </html>

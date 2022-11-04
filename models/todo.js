@@ -5,7 +5,7 @@
 const Todo = {
 
     // array of todos
-    data: ["Breakfast", "Lunch"],
+    data: [{text:"Breakfast"}, {text:"Lunch"}],
 
     // returns all todos
     get: function(){return this.data},
