@@ -4,7 +4,7 @@
 // Dependencies
 //**************************
 require("dotenv").config();
-const User = require("../models_/user");
+const {User} = require("../models");
 const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

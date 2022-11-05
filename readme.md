@@ -12,6 +12,8 @@ Keep in mind you'll need to run migration, documentation can be found here on ho
 
 https://sequelize.org/docs/v6/other-topics/migrations/#running-migrations
 
+The models/migration folders reflect setting up models using the sequelize CLI, the models_ folder represents writing out a database connection and models manually which requires to pre-make tables.
+
 |Route|Method|Path|Response|
 |-----|------|----|--------|
 |Index|GET|/todo| returns all todos as json |

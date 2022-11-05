@@ -3,7 +3,7 @@
 //**************************
 // Dependencies
 //**************************
-const Todo = require("../models_/todo");
+const {Todo} = require("../models");
 const { Router } = require("express");
 const middleware = require("./middleware");
 
