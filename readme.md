@@ -2,7 +2,7 @@
 
 This repository has an express app at many different states to model the setup for different situations. Explore the branches and checkout this readme to learn about each state.
 
-## express-ejs-nodb Branch
+## api-express-nodb Branch
 
 This branch shows an express app that deliver a JSON API with CRUD functionality and no database.
 
