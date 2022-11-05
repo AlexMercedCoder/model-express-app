@@ -6,6 +6,8 @@ This repository has an express app at many different states to model the setup f
 
 This branch shows an express app that deliver a JSON API with CRUD functionality using MONGODB.
 
+This API implement multi-user JWT token authentication.
+
 |Route|Method|Path|Response|
 |-----|------|----|--------|
 |Index|GET|/todo| returns all todos as json |
