@@ -1,27 +1,25 @@
-// since there is no database, we'll use an array as a proxy for a database
-// we'll define an array in this file and export functions to update the array
-// these functions simulate the method database libraries would provide
+// in this file we'll import the mongoose connection and create a todo model
+// we'll export the model for use in our routes
 
-const Todo = {
+//**************************
+// DEPENDENCIES
+//**************************
+const mongoose = require("./connection.js")
+const {Schema, model} = mongoose
 
-    // array of todos
-    data: [{text:"Breakfast"}, {text:"Lunch"}],
+//**************************
+// Todo Schema = Definition of a Todo
+//**************************
+const TodoSchema = new Schema({
+    text: String
+}, {timestamps: true})
 
-    // returns all todos
-    get: function(){return this.data},
+//**************************
+// Todo Model = Object for doing database operations
+//**************************
+const Todo = model("Todo", TodoSchema)
 
-    //returns one todo
-    getOne: function(index){return this.data[index]},
-
-    // creates a new todo
-    create: function(todo){this.data.push(todo)},
-
-    // updates a specified todo
-    update: function(index, newVersion){this.data[index] = newVersion},
-
-    // deletes a specified todo
-    delete: function(index){this.data.splice(index, 1)}
-}
-
-// export object for us elsewhere
+//**************************
+// Export Model for use in Routes
+//**************************
 module.exports = Todo

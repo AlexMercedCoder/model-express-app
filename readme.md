@@ -4,7 +4,7 @@ This repository has an express app at many different states to model the setup f
 
 ## express-ejs-nodb Branch
 
-This branch shows an express app that deliver a JSON API with CRUD functionality and no database.
+This branch shows an express app that deliver a JSON API with CRUD functionality using MONGODB.
 
 |Route|Method|Path|Response|
 |-----|------|----|--------|
