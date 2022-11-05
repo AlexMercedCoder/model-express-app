@@ -32,53 +32,36 @@ app.use(express.json()) // parse JSON bodies
 //**************************
 // main route
 app.get("/", (req, res) => {
-    res.render("home.ejs")
+    res.send("APP IS RUNNING")
 })
 
 // index route
 app.get("/todo", (req, res) => {
-    res.render("todo/index.ejs", {
-        todos: Todo.get()
-    })
+    res.json(Todo.get())
 })
 
 // create route
 app.post("/todo", (req, res) => {
     Todo.create(req.body)
-    res.redirect("/todo")
-})
-
-// new route
-app.get("/todo/new", (req, res) => {
-    res.render("todo/new.ejs")
+    res.json(Todo.get())
 })
 
 // update route
 app.put("/todo/:id", (req, res) => {
     Todo.update(req.params.id, req.body)
-    res.redirect("/todo")
+    res.json(Todo.get())
 })
 
-// edit route
-app.get("/todo/:id/edit", (req, res) => {
-    res.render("todo/edit.ejs", {
-        todo: Todo.getOne(req.params.id),
-        index: req.params.id
-    })
-})
 
 // destroy route
 app.delete("/todo/:id", (req, res) => {
     Todo.delete(req.params.id)
-    res.redirect("/todo")
+    res.json(Todo.get())
 })
 
 // show route
 app.get("/todo/:id", (req, res) => {
-    res.render("todo/show.ejs", {
-        todo: Todo.getOne(req.params.id),
-        index: req.params.id
-    })
+    res.json(Todo.getOne(req.params.id))
 })
 
 //**************************
