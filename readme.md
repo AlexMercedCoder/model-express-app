@@ -2,7 +2,7 @@
 
 This repository has an express app at many different states to model the setup for different situations. Explore the branches and checkout this readme to learn about each state.
 
-## express-ejs-nodb Branch
+## super-organized-mongo-ejs-auth Branch
 
 This branch shows an express app using EJS as a template engine implementing full crud routes for a basic todo list.
 
@@ -14,6 +14,8 @@ In this branch we use MongoDB as a database and connect to it using the mongoose
 - auth middleware on todo routes to protect them from logged out usersnp
 
 We also implement full MVC style setup with a Models, Views and Controllers folder separating concerns and organizing code.
+
+This branch goes a few more steps into organizing the code with utilities and middleware folder.
 
 |Route|Method|Path|Response|
 |-----|------|----|--------|

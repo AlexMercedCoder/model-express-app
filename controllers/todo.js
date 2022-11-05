@@ -5,7 +5,7 @@
 //**************************
 const Todo = require("../models/todo")
 const {Router} = require("express")
-const middleware = require("./middleware")
+const {auth} = require("../utilities")
 
 //**************************
 // Create Router
@@ -15,7 +15,7 @@ const router = Router()
 //**************************
 // Router Middleware
 //**************************
-router.use(middleware.auth)
+router.use(auth)
 
 
 //**************************
