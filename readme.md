@@ -4,9 +4,13 @@ This repository has an express app at many different states to model the setup f
 
 ## express-ejs-nodb Branch
 
-This branch shows an express app that deliver a JSON API with CRUD functionality using MONGODB.
+This branch shows an express app that deliver a JSON API with CRUD functionality using a Postgres Database with the Sequelize ORM.
 
 This API implement multi-user JWT token authentication.
+
+Keep in mind you'll need to run migration, documentation can be found here on how:
+
+https://sequelize.org/docs/v6/other-topics/migrations/#running-migrations
 
 |Route|Method|Path|Response|
 |-----|------|----|--------|

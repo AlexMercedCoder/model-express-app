@@ -1,25 +1,25 @@
-// in this file we'll import the mongoose connection and create a todo model
-// we'll export the model for use in our routes
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Todo extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  Todo.init({
+    text: DataTypes.STRING,
+    username: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Todo',
 
-//**************************
-// DEPENDENCIES
-//**************************
-const mongoose = require("./connection.js")
-const {Schema, model} = mongoose
-
-//**************************
-// Todo Schema = Definition of a Todo
-//**************************
-const TodoSchema = new Schema({
-    text: String
-}, {timestamps: true})
-
-//**************************
-// Todo Model = Object for doing database operations
-//**************************
-const Todo = model("Todo", TodoSchema)
-
-//**************************
-// Export Model for use in Routes
-//**************************
-module.exports = Todo
+  });
+  return Todo;
+};
